@@ -30,7 +30,7 @@
       </ion-card-content>
     </ion-card>
   </div>
-  <div class="ion-text-center">
+  <div class="ion-text-center" *ngIf="!modif">
     <ion-button color="secondary" (click)="setModif()" class="ion-margin-bottom custom-button">Modifier</ion-button>
     <ion-button color="danger" (click)="onDelete(chat.id)" class="ion-margin-bottom custom-button">Supprimer</ion-button>
   </div>
@@ -41,11 +41,15 @@
       </ion-card-header>
       <ion-card-content>
         <ion-item class="ion-margin-bottom">
+          <ion-label position="floating">Image</ion-label>
+          <ion-input type="text" [(ngModel)]="chat.pictureLink"></ion-input>
+        </ion-item>
+        <ion-item class="ion-margin-bottom">
           <ion-label position="floating">Race</ion-label>
           <ion-input type="text" [(ngModel)]="chat.race"></ion-input>
         </ion-item>
         <ion-item class="ion-margin-bottom">
-          <ion-label position="floating">Age</ion-label>
+          <ion-label position="floating">Age (en année)</ion-label>
           <ion-input type="number" [(ngModel)]="chat.age"></ion-input>
         </ion-item>
         <ion-item class="ion-margin-bottom">

@@ -3,12 +3,13 @@ export class Chat {
     race: string;
     name: string;
     age?: number;
-    mignonerie?: number;
+    mignonerie: number;
     pictureLink: string;
 
     constructor() {
         this.race = '';
         this.name = '';
         this.pictureLink = '';
+        this.mignonerie = 0;
     }
 }

@@ -13,7 +13,6 @@ export class ChatPage implements OnInit {
   modif: boolean = false;
   chat!: Chat;
 
-
   constructor(
     private alertCtrl : AlertController,
     private route: ActivatedRoute,
@@ -30,7 +29,7 @@ export class ChatPage implements OnInit {
   }
 
   async setModif() {
-    if(!this.modif) {
+    if (!this.modif) {
       const alert = await this.alertCtrl.create({
         header : 'Etes vous sur de vouloir modifier ?',
         subHeader: 'Vous rendrez possible la modification',
@@ -40,7 +39,7 @@ export class ChatPage implements OnInit {
             role: 'Cancel'
           }, {
             text: 'Configurer',
-            handler: () => {this.modif = !this.modif}
+            handler: () => { this.modif = !this.modif }
           }
         ]
       });
@@ -50,19 +49,23 @@ export class ChatPage implements OnInit {
     }
   }
 
-  async presentToast() {
+  async presentToast(Message: string) {
     const toast = this.toastCtrl.create({
-      message: 'Vos modifications sont enregistrées',
+      message: Message,
       duration: 2000
     });
     (await toast).present();
   }
 
   onModif() {
-    this.Chat.update(this.chat).subscribe(() => {
-      this.presentToast();
-      this.modif = false;
-    });
+    if (!this.chat.name || !this.chat.race || !this.chat.pictureLink || this.chat.age === null || this.chat.mignonerie === null || this.chat.pictureLink === '') {
+      this.presentToast('Erreur : Tous les champs doivent être remplis');
+    } else {
+      this.Chat.update(this.chat).subscribe(() => {
+        this.presentToast('Chat modifié avec succès');
+        this.modif = false;
+      });
+    }
   }
 
   onDelete(id: any) {

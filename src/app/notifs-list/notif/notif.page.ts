@@ -49,19 +49,23 @@ export class NotifPage implements OnInit {
     }
   }
 
-  async presentToast() {
+  async presentToast(Message : string) {
     const toast = this.toastCtrl.create({
-      message: 'Vos modifications sont enregistrées',
+      message: Message,
       duration: 2000
     });
     (await toast).present();
   }
 
   onModif() {
-    this.Notif.update(this.notif).subscribe(() => {
-      this.presentToast();
-      this.modif = false;
-    });
+    if (!this.notif.titre || !this.notif.jour || !this.notif.heure || !this.notif.descr) {
+      this.presentToast('Erreur : Tous les champs doivent être remplis');
+    } else {
+      this.Notif.update(this.notif).subscribe(() => {
+        this.presentToast('Vos modifications sont enregistrées');
+        this.modif = false;
+      });
+    }
   }
 
   onDelete(id: any) {

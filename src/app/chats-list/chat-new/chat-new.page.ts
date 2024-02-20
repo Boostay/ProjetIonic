@@ -22,9 +22,9 @@ export class ChatNewPage implements OnInit {
     this.chat = new Chat();
   }
 
-  async presentToast() {
+  async presentToast(Message : string) {
     const toast = this.toastCtrl.create({
-      message: 'Nouveau Chat enregistré',
+      message: Message,
       duration: 2000
     });
     (await toast).present().then(() => {
@@ -35,9 +35,14 @@ export class ChatNewPage implements OnInit {
   }
 
   add() {
-    this.Chat.saveNewChat(this.chat).subscribe(() => {
-      this.chat = new Chat();
-      this.presentToast();
-    });
+    if(this.chat.name === '' || this.chat.race === '' || this.chat.pictureLink === '' || this.chat.age === null || this.chat.mignonerie === null) {
+      this.presentToast('Erreur : Tous les champs doivent être remplis');
+    }
+    else {
+      this.Chat.saveNewChat(this.chat).subscribe(() => {
+        this.chat = new Chat();
+        this.presentToast('Nouveau Chat enregistré');
+      });
+    }
   }
 }
