@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Bienvenue</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label>
+        Bienvenu sur l'application de Duclaux Titouan. Cette application vous permet de gérer des données de chats ainsi que de gérer des notifications.
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <strong>Fonctionnalités :</strong>
+        <ul>
+          <li>Ajouter, modifier et supprimer des chats existants.</li>
+          <li>Gérer et planifier des notifications pour des événements.</li>
+          <li>Modifier et supprimer des notifications existantes.</li>
+          <li>Voir une liste de toutes les notifications programmées.</li>
+          <li>Recevoir des notifications à l'heure et à la date prévues. (La fonctionnalité ne s'affiche pas sur le téléphone, j'ai cherché pendant plusieurs heures mais je n'ai pas réussi à trouver le problème.)</li>
+        </ul>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list lines="none">
+    <ion-item [routerLink]="['/chats']">
+      <ion-label style="color: #007bff; text-decoration: underline;">Accéder à la gestion des chats</ion-label>
+    </ion-item>
+    <ion-item [routerLink]="['/notifs']">
+      <ion-label style="color: #007bff; text-decoration: underline;">Accéder à la gestion des notifications</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

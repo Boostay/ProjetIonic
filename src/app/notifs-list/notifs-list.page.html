@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Notifications</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-text-center">
+  <h2>Liste des notifications prévues</h2>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" *ngFor="let notif of notifs">
+        <ion-card [routerLink]="['/notifs/', notif.id]">
+          <ion-card-header>
+            <ion-card-title>{{notif.jour}} || {{notif.titre}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{notif.descr}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Bouton d'ajout de nouvelle notification -->
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button routerLink="/notifs/new" class="ion-align-items-center">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

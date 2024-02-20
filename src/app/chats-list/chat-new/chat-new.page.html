@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Nouveau Chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <p></p>
+  <ion-item>
+    <ion-input type="text" label="Photo (URL) : " [(ngModel)]="chat.pictureLink"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" label="Race : " [(ngModel)]="chat.race"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" label="Nom : " [(ngModel)]="chat.name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="number" label="Age : " [(ngModel)]="chat.age"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="number" label="Taux de mignonerie : " [(ngModel)]="chat.mignonerie"></ion-input>
+  </ion-item>
+  <p class="ion-text-center">
+    <br>
+    <br>
+  <ion-button (click)="add()">Créer</ion-button>
+  </p>
+</ion-content>
+

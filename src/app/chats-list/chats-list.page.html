@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mes chats</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-text-center">
+  <h2>Ajouter un nouveau chat</h2>
+  <br>
+  <ion-button routerLink="/chats/new">Créer</ion-button>
+  <br>
+  <br>
+  <h2>Liste des chats</h2>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" *ngFor="let chat of chats">
+        <ion-card [routerLink]="['/chats/', chat.id]">
+          <img [src]="chat.pictureLink" [alt]="chat.race">
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
